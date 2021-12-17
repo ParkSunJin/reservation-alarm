@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+<mapper namespace="com.reservationalarm.user.UserMapper">
+    <select id="selectUserById" resultType="User">
+        select * from users where id=#{id}
+    </select>
+
+    <select id="selectAllUsers" resultType="User">
+        select * from users
+    </select>
+
+    <insert id="insertUser" parameterType="User">
+        insert into user (userId, userPassword, userName) values (#{id}, #{password}, #{name})
+    </insert>
+</mapper>

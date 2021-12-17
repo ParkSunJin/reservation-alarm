@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+<mapper namespace="com.reservationalarm.movie.MovieMapper">
+    <select id="selectMovieById" resultType="Movie">
+        select * from movie where movieId=#{movieId}
+    </select>
+
+    <select id="selectMovieByTitle" resultType="Movie">
+        select * from movie where movieTitle like CONCAT('%',#{movieTitle},'%')
+    </select>
+
+    <select id="selectAllMovie" resultType="Movie">
+        select * from movie order by movieScore desc
+    </select>
+
+    <insert id="insertMovie" parameterType="Movie" useGeneratedKeys="true" keyProperty="movieId">
+        insert into movie (movieId, movieTitle, movieImageSrc, movieScore, openingDate, reservationLink, isOpened) values (#{movieId}, #{movieTitle}, #{movieImageSrc}, #{movieScore}, #{openingDate}, #{reservationLink}, #{isOpened})
+    </insert>
+
+    <update id="updateMovie" parameterType="Movie">
+        update movie set movieScore=#{movieScore}, isOpened=#{isOpened} where movieTitle=#{movieTitle}
+    </update>
+
+    <delete id="deleteAllMovie">
+        delete from movie
+    </delete>
+</mapper>

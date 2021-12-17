@@ -1,0 +1,154 @@
+@charset 'UTF-8';
+
+.have_prepaid_card {position:relative; height:370px; background:#373435; color:#fff;}
+.have_prepaid_card:before {position:absolute; bottom:-1px; left:50%; margin-left:-17px; display:block; content:''; width:34px; height:20px; background:url('../images/common/mycgv_prepaid/bg_have_prepaid_card_arrow.png') no-repeat 0 0;}
+
+.have_prepaid_card .slider {min-width:800px; height:100%; margin: 0 auto;}
+.have_prepaid_card .slick-list {height:100%;}
+.have_prepaid_card .slick-track {top:50%; margin-top:-90px;}
+.have_prepaid_card .slick-slide {position:relative; outline:none; text-align:center;}
+.have_prepaid_card .slick-slide .item {display:block; margin:0 auto; width:138px; transition:all 300ms ease-in-out;}
+.have_prepaid_card .slick-slide .item img {width:100%;}
+.have_prepaid_card .slick-center.slick-slide .item {
+	/* width:280px; margin:-45px 0 0 -16px; */
+	-moz-transform:scale(2);
+	-ms-transform:scale(2);
+	-o-transform:scale(2);
+	-webkit-transform:scale(2);
+	transform:scale(2);
+}
+
+.have_prepaid_card .represent_mark {display:none; overflow:hidden; position:absolute; left:5px; top:5px; /* left:52px; top:-2px; */ width:16px; height:16px;}
+.have_prepaid_card .represent_mark > label {
+	position:absolute; left:0; top:0; 
+	display:block; width:16px; height:16px; font-size:0; line-height:0; text-indent:-999em; 
+	background:transparent url('../images/common/mycgv_prepaid/icon_represent_mark.png') 0 0 no-repeat;
+	cursor:pointer;
+	background-size:100%;
+}
+.have_prepaid_card .represent_mark.checked > label {background-position:0 -50px;}
+.have_prepaid_card .represent_mark > input {position:absolute; top:-50px; left:-10px; border:0;}
+
+.have_prepaid_card .slick-center.slick-slide .represent_mark {/* left:-5px; top:-35px; */ display:block;}
+
+
+.have_prepaid_card .slick-slide .hpc-info {
+	position:absolute;
+	top:125px; 
+	/* left:50%; */
+	width:100%;
+	/* margin-left:-123px; */
+	text-align:center; 
+	filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity:0;opacity:0;
+	transition:all 300ms ease;
+}
+.have_prepaid_card .slick-slide.slick-center .hpc-info {
+	margin-top:25px;
+	filter:alpha(opacity=100);-moz-opacity:1;-khtml-opacity:1;opacity:1;
+}
+
+.have_prepaid_card .slick-slide .hpc-info .hpc-price {display:block; font-size:25px; line-height:1.4;}
+.have_prepaid_card .slick-slide .hpc-info .hpc-cardnum {display:block; font-size:12px; line-height:1.4;}
+.have_prepaid_card .slick-slide .link-txt {display:inline-block; margin-top:10px; font-size:12px; color:#b9b8b9; text-decoration:underline;}
+
+.have_prepaid_card .slick-prev,
+.have_prepaid_card .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 26px;
+    height: 52px;
+    padding: 0;
+	margin: -26px 0 0;
+    /*
+	-webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+	*/
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: none !important;
+}
+
+.have_prepaid_card .slick-prev {left: 25px; background:url('../images/common/mycgv_prepaid/bgbtn_arrow_slick.png') no-repeat 0 0 !important;}
+.have_prepaid_card .slick-next {right: 25px; background:url('../images/common/mycgv_prepaid/bgbtn_arrow_slick.png') no-repeat 0 -100px !important;}
+
+.have_prepaid_card .slick-dots {
+    position: absolute;
+    top: 15px;
+	right: 18px;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+}
+.have_prepaid_card .slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    /* margin: 0 5px; */
+    padding: 0;
+    cursor: pointer;
+}
+.have_prepaid_card .slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 10px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.have_prepaid_card .slick-dots li button:hover,
+.have_prepaid_card .slick-dots li button:focus {outline: none;}
+.have_prepaid_card .slick-dots li button:hover:before,
+.have_prepaid_card .slick-dots li button:focus:before {opacity: 1;}
+.have_prepaid_card .slick-dots li button:before {
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.have_prepaid_card .slick-dots li.slick-active button:before {opacity: .75; color: black;}
+.have_prepaid_card .slick-dots li {width: 10px; margin: 0 1px;}
+.have_prepaid_card .slick-dots li button {width:inherit;}
+.have_prepaid_card .slick-dots li button:hover:before,
+.have_prepaid_card .slick-dots li button:focus:before {opacity: 1; color:#c71c00;}
+.have_prepaid_card .slick-dots li button:before {
+	font-size: 25px; opacity: .8; color: gray;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.have_prepaid_card .slick-dots li.slick-active button:before {opacity: 1; color: #c71c00;}
+
+.have_prepaid_card + .tit-mycgv {text-align:center; margin-top:20px;}
+.have_prepaid_card + .tit-mycgv > h4 {float:none; text-align:center;}
+
+/* for-ie8 ------------------------------- */
+.have_prepaid_card.for-ie8 .slick-center.slick-slide .item {width:280px; margin:-45px 0 0 -16px;}
+.have_prepaid_card.for-ie8 .represent_mark {left:-7px; top:-35px; width:32px; height:32px;}
+.have_prepaid_card.for-ie8 .represent_mark > label {width:32px; height:32px;}
+.have_prepaid_card.for-ie8 .represent_mark.checked > label {background-position:0 -100px;}
+
+.have_prepaid_card.for-ie8.onetype .slick-center.slick-slide .item {margin:-45px auto 0;}
+.have_prepaid_card.for-ie8.onetype .represent_mark {left:50%; margin-left:-132px;}

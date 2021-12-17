@@ -1,0 +1,89 @@
+/* iCheck plugin Square skin, red
+----------------------------------- */
+.icheckbox_square-red {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0 6px 0 0;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    background: url(icheckbox.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+.icheckbox_square-red {
+    background-position: 0 0;
+}
+.icheckbox_square-red + label {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 17px;
+    vertical-align: top;
+	cursor:pointer;
+}
+.icheckbox_square-red.checked {
+    background-position: -25px 0;
+}
+.icheckbox_square-red.disabled {
+    background-position: -50px 0;
+}
+
+.icheckbox_circle-red {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0 6px 0 0;
+    padding: 0;
+    width: 34px;
+    height: 34px;
+    background: url(icheckbox_circle.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+.icheckbox_circle-red {
+    background-position: 0 0;
+}
+.icheckbox_circle-red + label {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 33px;
+    vertical-align: top;
+	cursor:pointer;
+}
+.icheckbox_circle-red.checked {
+    background-position: -45px 0;
+}
+.icheckbox_circle-red.disabled {
+    background-position: -90px 0;
+}
+
+
+.iradio_circle-red {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0 6px 0 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background: url(iradio_circle.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+.iradio_circle-red {
+    background-position: 0 0;
+}
+.iradio_circle-red + label {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 23px;
+    vertical-align: top;
+	cursor:pointer;
+}
+.iradio_circle-red.checked {
+    background-position: -38px 0;
+}
+.iradio_circle-red.disabled {
+    background-position: -76px 0;
+}
