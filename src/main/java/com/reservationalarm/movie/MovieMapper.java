@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface MovieMapper {
     Movie selectMovieById(Integer movieId);
-    List<Movie> selectMovieByTitle(String movieTitle);
+    List<Movie>` selectMovieByTitle(String movieTitle);
     List<Movie> selectAllMovie();
     void insertMovie(Movie movie);
     void updateMovie(Movie movie);
