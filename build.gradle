@@ -23,12 +23,26 @@ dependencies {
     implementation 'junit:junit:4.12'
     testCompileOnly 'junit:junit:4.12'
 
+
     //	h2 추가
     runtimeOnly 'com.h2database:h2'
     // jsoup 추가
     implementation 'org.jsoup:jsoup:1.13.1'
+
+    // spring batch
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+    // 배치를 주기적으로 실행시키기 위한 트리거로 사용하기 위해서 추가
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+
+    //implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 }
 
 test {
     useJUnitPlatform()
 }
+
+//configurations {
+//    all {
+//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+//    }
+//}
