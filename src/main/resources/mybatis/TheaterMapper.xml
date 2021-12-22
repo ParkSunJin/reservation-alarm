@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+<mapper namespace="com.reservationalarm.theater.TheaterDAO">
+    <select id="selectTheaterById" resultType="Theater">
+        select * from theater where theaterId=#{theaterId}
+    </select>
+
+    <select id="selectTheaterByName" resultType="Theater">
+        select * from theater where theaterName like CONCAT('%',#{theaterName},'%')
+    </select>
+
+    <select id="selectAllTheater" resultType="Theater">
+        select * from theater
+    </select>
+
+    <insert id="insertTheater" parameterType="Theater" useGeneratedKeys="true" keyProperty="theaterId">
+        insert into theater (theaterId, theaterName, theaterCode, areaName, areaCode, theaterNameEng, areaNameEng) values (#{theaterId}, #{theaterName}, #{theaterCode}, #{areaName}, #{areaCode}, #{theaterNameEng}, #{areaNameEng})
+    </insert>
+
+    <delete id="deleteAllTheater">
+        delete from theater
+    </delete>
+</mapper>

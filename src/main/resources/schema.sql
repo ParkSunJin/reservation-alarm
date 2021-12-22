@@ -4,15 +4,18 @@ CREATE TABLE USERS(
     userName        VARCHAR(45) NOT NULL,
 );
 
-CREATE TABLE CINEMA(
-    cinemaId    NUMBER PRIMARY KEY,
-    cinemaName  VARCHAR(45) NOT NULL,
-    areaCode    VARCHAR(45) NOT NULL,
+CREATE TABLE Theater(
+    theaterId    NUMBER AUTO_INCREMENT PRIMARY KEY,
+    theaterName  VARCHAR(45) NOT NULL,
     theaterCode VARCHAR(45) NOT NULL,
+    areaName VARCHAR(45) NOT NULL,
+    areaCode    VARCHAR(45) NOT NULL,
+    theaterNameEng    VARCHAR(45),
+    areaNameEng    VARCHAR(45)
 );
 
 CREATE TABLE HALLTYPE(
-    hallTypeId      NUMBER PRIMARY KEY,
+    hallTypeId      NUMBER AUTO_INCREMENT PRIMARY KEY,
     cinemaId        NUMBER NOT NULL,
     hallTypeName    VARCHAR(45) NOT NULL,
     FOREIGN KEY(cinemaId) REFERENCES CINEMA (cinemaId)
@@ -29,7 +32,7 @@ CREATE TABLE MOVIE(
 );
 
 CREATE TABLE RESERVATION(
-    reservationId   NUMBER PRIMARY KEY,
+    reservationId   NUMBER AUTO_INCREMENT PRIMARY KEY,
     userId          VARCHAR(45) NOT NULL,
     movieId         NUMBER NOT NULL,
     hallTypeId          NUMBER NOT NULL,
@@ -42,7 +45,7 @@ CREATE TABLE RESERVATION(
 );
 
 CREATE TABLE NOTICE(
-    noticeId   NUMBER PRIMARY KEY,
+    noticeId   NUMBER AUTO_INCREMENT PRIMARY KEY,
     userId          VARCHAR(45) NOT NULL,
     movieId         NUMBER NOT NULL,
     hallTypeId          NUMBER NOT NULL,
