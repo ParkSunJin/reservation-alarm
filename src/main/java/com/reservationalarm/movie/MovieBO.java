@@ -19,27 +19,27 @@ import java.util.Objects;
 @Service
 public class MovieBO {
     @Autowired
-    MovieDAO movieMapper;
+    MovieDAO movieDAO;
 
     // 영화 정보 크롤링 url
     private final static String crawlingURL = "http://www.cgv.co.kr/movies/?lt=1&ft=0";
 
     public Movie findMovieById(Integer movieId) {
-        return movieMapper.selectMovieById(movieId);
+        return movieDAO.selectMovieById(movieId);
     }
 
     public List<Movie> findMovieByTitle(String movieTitle) {
         if (movieTitle.isEmpty()) return null;
-        return movieMapper.selectMovieByTitle(movieTitle);
+        return movieDAO.selectMovieByTitle(movieTitle);
     }
 
     public List<Movie> findAllMovie() {
-        return movieMapper.selectAllMovie();
+        return movieDAO.selectAllMovie();
     }
 
     public void insertMovieByCrawling() throws IOException, ParseException {
         // 영화 정보 크롤링해서 DB에 저장하기 전에 그 전의 데이터는 모두 삭제한다.
-        movieMapper.deleteAllMovie();
+        movieDAO.deleteAllMovie();
 
         Document document = crawlingFromUrl();
 
@@ -48,7 +48,7 @@ public class MovieBO {
         moviesInfo.stream()
                 .map(this::convert)
                 .filter(Objects::nonNull)
-                .forEach(movieMapper::insertMovie);
+                .forEach(movieDAO::insertMovie);
     }
 
     private Document crawlingFromUrl() throws IOException {
