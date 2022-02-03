@@ -1,6 +1,5 @@
 package com.reservationalarm.movie;
 
-import com.reservationalarm.movie.MovieDAO;
 import com.reservationalarm.movie.domain.Movie;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Connection;
@@ -12,7 +11,6 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -23,7 +21,7 @@ import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
-public class OuterTasklet implements Tasklet {
+public class MovieBatchOuterTasklet implements Tasklet {
     private final MovieDAO movieDAO;
 
     // 영화 정보 크롤링 url

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class MovieBatchJob {
-    private final OuterTasklet outerTasklet;
+    private final MovieBatchOuterTasklet movieBatchOuterTasklet;
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
@@ -30,7 +30,7 @@ public class MovieBatchJob {
     public Step movieBatchTaskletStep(){
         return stepBuilderFactory
                 .get("movieBatchTaskletStep")
-                .tasklet(outerTasklet)
+                .tasklet(movieBatchOuterTasklet)
                 .build();
     }
 }

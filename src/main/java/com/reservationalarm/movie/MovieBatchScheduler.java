@@ -19,7 +19,7 @@ public class MovieBatchScheduler {
 
     // 하루마다 실행
     @Scheduled(fixedDelay = 86400 * 1000L)
-    public void executeJob () {
+    public void executeJob() {
         try {
             jobLauncher.run(
                     movieBatchTasklet,
