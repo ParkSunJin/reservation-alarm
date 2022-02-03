@@ -40,6 +40,8 @@ public class MovieBO {
     public void insertMovieByCrawling() throws IOException, ParseException {
         // 영화 정보 크롤링해서 DB에 저장하기 전에 그 전의 데이터는 모두 삭제한다.
         movieDAO.deleteAllMovie();
+        // auto increment 초기화
+        movieDAO.initializeAutoIncrement();
 
         Document document = crawlingFromUrl();
 

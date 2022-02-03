@@ -26,4 +26,8 @@
     <delete id="deleteAllMovie">
         delete from movie
     </delete>
+
+    <update id="initializeAutoIncrement">
+        alter table movie alter column movieId restart with 1
+    </update>
 </mapper>

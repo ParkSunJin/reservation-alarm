@@ -13,4 +13,5 @@ public interface MovieDAO {
     void insertMovie(Movie movie);
     void updateMovie(Movie movie);
     void deleteAllMovie();
+    void initializeAutoIncrement();
 }

@@ -14,15 +14,15 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class TutorialScheduler {
 
-    private final Job job;  // tutorialJob
+    private final Job tutorialJob;  // tutorialJob
     private final JobLauncher jobLauncher;
 
     // 5초마다 실행
-    @Scheduled(fixedDelay = 1 * 1000L)
+    @Scheduled(fixedDelay = 80000 * 1000L)
     public void executeJob () {
         try {
             jobLauncher.run(
-                    job,
+                    tutorialJob,
                     new JobParametersBuilder()
                             .addString("datetime", LocalDateTime.now().toString())
                             .toJobParameters()  // job parameter 설정
