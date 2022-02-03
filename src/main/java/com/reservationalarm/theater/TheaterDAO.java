@@ -13,4 +13,5 @@ public interface TheaterDAO {
     List<Theater> selectAllTheater();
     void insertTheater(Theater theater);
     void deleteAllTheater();
+    void initializeAutoIncrement();
 }

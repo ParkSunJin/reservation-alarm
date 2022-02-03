@@ -22,4 +22,8 @@
     <delete id="deleteAllTheater">
         delete from theater
     </delete>
+
+    <update id="initializeAutoIncrement">
+        alter table theater alter column theaterId restart with 1
+    </update>
 </mapper>
