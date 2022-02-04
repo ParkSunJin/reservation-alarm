@@ -29,6 +29,10 @@ public class TheaterBO {
         return theaterDAO.selectAllTheater();
     }
 
+    public Theater findTheaterById(Integer theaterId){
+        return theaterDAO.selectTheaterById(theaterId);
+    }
+
     public List<Theater> findTheaterByName(String theaterName){
         if(theaterName.isEmpty()) return null;
         return theaterDAO.selectTheaterByName(theaterName);
