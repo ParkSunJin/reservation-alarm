@@ -1,21 +1,13 @@
 package com.reservationalarm.user;
 
-import com.reservationalarm.user.model.UserEntity;
-import org.springframework.stereotype.Service;
+import com.reservationalarm.user.domain.User;
+import org.apache.ibatis.annotations.Mapper;
 
-@Service
-public class UserDAO {
+import java.util.List;
 
-    public String createUser(UserEntity userEntity) {
-        return "123";
-    }
-
-    public UserEntity readUser(String id) {
-        return UserEntity.builder()
-                .userSeq(1L)
-                .id("123")
-                .password("***")
-                .name("김동현")
-                .build();
-    }
+@Mapper
+public interface UserDAO {
+    User selectUserById(String id);
+    List<User> selectAllUsers();
+    void insertUser(User user);
 }

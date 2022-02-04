@@ -1,12 +1,14 @@
 package com.reservationalarm.user.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserCreateDTO {
-    private String id;
-    private String password;
-    private String name;
+    private String userId;
+    private String userPassword;
+    private String userName;
 }

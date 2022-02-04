@@ -1,5 +1,6 @@
 package com.reservationalarm.user;
 
+import com.reservationalarm.user.domain.User;
 import com.reservationalarm.user.model.UserCreateDTO;
 import com.reservationalarm.user.model.UserEntity;
 import com.reservationalarm.user.model.UserReadDTO;
@@ -12,18 +13,18 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserModelConverter {
-    public static UserEntity of(UserCreateDTO dto) {
-        return UserEntity
+    public static User of(UserCreateDTO dto) {
+        return User
                 .builder()
-                .id(dto.getId())
-                .password(dto.getPassword())
-                .name(dto.getName())
+                .userId(dto.getUserId())
+                .userPassword(dto.getUserPassword())
+                .userName(dto.getUserName())
                 .build();
     }
 
-    public static UserReadDTO of(UserEntity userEntity) {
+    public static UserReadDTO of(User user) {
         return UserReadDTO.builder()
-                .name(userEntity.getName())
+                .userName(user.getUserName())
                 .build();
     }
 }

@@ -18,9 +18,9 @@ public class UserH2Test {
         rs.next();
 
         User user = new User();
-        user.setId(rs.getString("id"));
-        user.setName(rs.getString("name"));
-        user.setPassword(rs.getString("password"));
+        user.setUserId(rs.getString("id"));
+        user.setUserName(rs.getString("name"));
+        user.setUserPassword(rs.getString("password"));
         System.out.println(user.toString());
 
         rs.close();
