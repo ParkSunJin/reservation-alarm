@@ -21,5 +21,9 @@ public class UserBO {
         return userDAO.selectAllUsers();
     }
 
+    public User findUserById(String id){
+        return userDAO.selectUserById(id);
+    }
+
 
 }
