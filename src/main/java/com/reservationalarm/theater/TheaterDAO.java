@@ -1,6 +1,5 @@
 package com.reservationalarm.theater;
 
-import com.reservationalarm.movie.domain.Movie;
 import com.reservationalarm.theater.domain.Theater;
 import org.apache.ibatis.annotations.Mapper;
 
