@@ -1,14 +1,14 @@
 package com.reservationalarm.theater.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Objects;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Theater {
     public Integer theaterId;
     public String areaName;
