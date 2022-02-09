@@ -39,7 +39,11 @@ public class TheaterBO {
     }
 
     public void insertTheaterByCrawling() throws IOException, JSONException {
+        // 영화관 정보 크롤링해서 DB에 저장하기 전에 그 전의 데이터는 모두 삭제한다.
         theaterDAO.deleteAllTheater();
+        // auto increment 초기화
+        theaterDAO.initializeAutoIncrement();
+
         Document document = crawlingFromUrl();
 
         String theaterJsonData = parseTheaterJsonData(document);
