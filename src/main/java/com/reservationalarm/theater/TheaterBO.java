@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.function.Predicate.not;
+
 @Service
 public class TheaterBO {
     @Autowired
@@ -39,10 +41,7 @@ public class TheaterBO {
     }
 
     public void insertTheaterByCrawling() throws IOException, JSONException {
-        // 영화관 정보 크롤링해서 DB에 저장하기 전에 그 전의 데이터는 모두 삭제한다.
-        theaterDAO.deleteAllTheater();
-        // auto increment 초기화
-        theaterDAO.initializeAutoIncrement();
+        List<Theater> curTheaters = theaterDAO.selectAllTheater();
 
         Document document = crawlingFromUrl();
 
@@ -51,7 +50,16 @@ public class TheaterBO {
         List<Theater> theaters= convert(theaterJsonData);
 
         theaters.stream()
+                .filter(newTheater -> this.notContains(curTheaters, newTheater))
                 .forEach(theaterDAO::insertTheater);
+    }
+
+    private boolean notContains(List<Theater> curTheaters, Theater newTheater){
+        long cnt = curTheaters.stream()
+                .filter(curTheater -> newTheater.equals(curTheater))
+                .count();
+        if(cnt > 0) return false;
+        else return true;
     }
 
     private Document crawlingFromUrl() throws IOException {
