@@ -55,11 +55,10 @@ public class TheaterBO {
     }
 
     private boolean notContains(List<Theater> curTheaters, Theater newTheater){
-        long cnt = curTheaters.stream()
+        return curTheaters.stream()
                 .filter(curTheater -> newTheater.equals(curTheater))
-                .count();
-        if(cnt > 0) return false;
-        else return true;
+                .findAny()
+                .isEmpty();
     }
 
     private Document crawlingFromUrl() throws IOException {
