@@ -2,20 +2,39 @@ package com.reservationalarm.reservation;
 
 import com.reservationalarm.reservation.domain.Reservation;
 import com.reservationalarm.reservation.model.MovieTime;
+import com.reservationalarm.reservation.model.ReservationCreateDTO;
+import com.reservationalarm.theater.domain.Theater;
+import lombok.RequiredArgsConstructor;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class ReservationBO {
+    private final ReservationDAO reservationDAO;
+
+    public void makeReservation(ReservationCreateDTO reservationCreateDTO){
+
+    }
+
+    public List<Reservation> findAll(){
+        return reservationDAO.selectAll();
+    }
+
+
     ArrayList<MovieTime> findReservation(Reservation reservation) throws IOException {
+        Theater theater = reservation.getTheater();
         String crawlingURL = "http://www.cgv.co.kr/common/showtimes/iframeTheater.aspx?areacode="
-                + reservation.getAreaCode()
-                + "&theatercode=" + reservation.getTheaterCode()
+                + theater.getAreaCode()
+                + "&theatercode=" + theater.getTheaterCode()
                 + "&date=" + reservation.getDesiredDate();
 
         Connection conn = Jsoup.connect(crawlingURL);
@@ -28,7 +47,7 @@ public class ReservationBO {
         for(Element showTimeTablesForMovie : showTimeTablesForMovies){
 
             String movieTitle = showTimeTablesForMovie.select(".info-movie a").text();
-            if(movieTitle.contains(reservation.getMovie())){
+            if(movieTitle.contains(reservation.getMovieTitle())){
                 Elements showTimeTablesForHallTypes = showTimeTablesForMovie.getElementsByClass("type-hall");
                 for(Element showTimeTablesForHallType : showTimeTablesForHallTypes){
 
@@ -37,7 +56,7 @@ public class ReservationBO {
                     String hallType = infoHall.get(0).text();
                     String hallName = infoHall.get(1).text();
 
-                    if(hallType.contains(reservation.getHallType())){
+                    if(hallType.contains(reservation.getHallType().getValue())){
                         Elements infoTimeTables = showTimeTablesForHallType.select(".info-timetable li");
                         for(Element availableTime : infoTimeTables){
                             String time = availableTime.getElementsByTag("em").text();

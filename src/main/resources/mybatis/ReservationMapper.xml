@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+<mapper namespace="com.reservationalarm.reservation.ReservationDAO">
+    <resultMap id="theater" type="Theater">
+        <result column="theaterId" property="theaterId"/>
+        <result column="areaName" property="areaName"/>
+        <result column="theaterName" property="theaterName"/>
+        <result column="areaCode" property="areaCode"/>
+        <result column="theaterCode" property="theaterCode"/>
+        <result column="theaterNameEng" property="theaterNameEng"/>
+        <result column="areaNameEng" property="areaNameEng"/>
+    </resultMap>
+
+    <resultMap id="reservationJoinTeater" type="Reservation">
+        <result column="reservationId" property="reservationId"/>
+        <result column="desiredDate" property="desiredDate"/>
+        <result column="movieTitle" property="movieTitle"/>
+        <result column="hallType" property="hallType"/>
+        <association property="theater" column="theater" resultMap="theater"/>
+    </resultMap>
+    
+    <select id="selectById" resultMap="reservationJoinTeater">
+        select * from reservation r join theater t on r.theaterId = t.theaterId where r.reservationId=#{reservationId}
+    </select>
+
+    <select id="selectAll" resultMap="reservationJoinTeater">
+        select * from reservation r join theater t on r.theaterId = t.theaterId
+    </select>
+
+    <insert id="insert" parameterType="Reservation" useGeneratedKeys="true" keyProperty="reservationId">
+        insert into reservation (movieTitle, desiredDate, theaterId, hallType) values (#{movieTitle}, #{desiredDate}, #{theaterId}, #{hallType})
+    </insert>
+</mapper>
