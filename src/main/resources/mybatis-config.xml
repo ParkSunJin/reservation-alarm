@@ -7,11 +7,13 @@
         <typeAlias type="com.reservationalarm.user.domain.User" alias="User"/>
         <typeAlias type="com.reservationalarm.movie.domain.Movie" alias="Movie"/>
         <typeAlias type="com.reservationalarm.theater.domain.Theater" alias="Theater"/>
+        <typeAlias type="com.reservationalarm.reservation.domain.Reservation" alias="Reservation"/>
     </typeAliases>
     <!-- 매핑정보 추가 -->
     <mappers>
         <mapper resource="mybatis/UserMapper.xml" />
         <mapper resource="mybatis/MovieMapper.xml" />
         <mapper resource="mybatis/TheaterMapper.xml" />
+        <mapper resource="mybatis/ReservationMapper.xml" />
     </mappers>
 </configuration>

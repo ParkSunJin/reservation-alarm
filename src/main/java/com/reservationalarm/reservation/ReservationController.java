@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
 
+/*
+ *  TODO: 프론트에서 정확한 theaterName, movieTitle만 보내도록 할것
+ * */
+
 @RestController
 @RequiredArgsConstructor
 public class ReservationController {

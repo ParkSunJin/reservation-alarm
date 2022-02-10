@@ -13,20 +13,30 @@
         <result column="areaNameEng" property="areaNameEng"/>
     </resultMap>
 
-    <resultMap id="reservationJoinTeater" type="Reservation">
+    <resultMap id="movie" type="Movie">
+        <result column="movieId" property="movieId"/>
+        <result column="movieTitle" property="movieTitle"/>
+        <result column="movieImageSrc" property="movieImageSrc"/>
+        <result column="movieScore" property="movieScore"/>
+        <result column="openingDate" property="openingDate"/>
+        <result column="reservationLink" property="reservationLink"/>
+        <result column="isOpened" property="isOpened"/>
+    </resultMap>
+
+    <resultMap id="reservationJoinTheater" type="Reservation">
         <result column="reservationId" property="reservationId"/>
         <result column="desiredDate" property="desiredDate"/>
-        <result column="movieTitle" property="movieTitle"/>
         <result column="hallType" property="hallType"/>
+        <association property="movie" column="movie" resultMap="movie"/>
         <association property="theater" column="theater" resultMap="theater"/>
     </resultMap>
     
-    <select id="selectById" resultMap="reservationJoinTeater">
-        select * from reservation r join theater t on r.theaterId = t.theaterId where r.reservationId=#{reservationId}
+    <select id="selectById" resultMap="reservationJoinTheater">
+        select * from reservation r, theater t, movie m where r.theaterId = t.theaterId and r.movieTitle = m.movieTitle
     </select>
 
-    <select id="selectAll" resultMap="reservationJoinTeater">
-        select * from reservation r join theater t on r.theaterId = t.theaterId
+    <select id="selectAll" resultMap="reservationJoinTheater">
+        select * from reservation r, theater t, movie m where r.theaterId = t.theaterId and r.movieTitle = m.movieTitle
     </select>
 
     <insert id="insert" parameterType="Reservation" useGeneratedKeys="true" keyProperty="reservationId">

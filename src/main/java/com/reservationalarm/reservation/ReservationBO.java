@@ -47,7 +47,7 @@ public class ReservationBO {
         for(Element showTimeTablesForMovie : showTimeTablesForMovies){
 
             String movieTitle = showTimeTablesForMovie.select(".info-movie a").text();
-            if(movieTitle.contains(reservation.getMovieTitle())){
+            if(movieTitle.contains(reservation.getMovie().getMovieTitle())){
                 Elements showTimeTablesForHallTypes = showTimeTablesForMovie.getElementsByClass("type-hall");
                 for(Element showTimeTablesForHallType : showTimeTablesForHallTypes){
 

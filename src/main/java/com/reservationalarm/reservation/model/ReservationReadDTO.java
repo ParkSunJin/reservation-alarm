@@ -15,4 +15,5 @@ public class ReservationReadDTO {
     public Date desiredDate;
     public String movieTitle;
     public HallType hallType;
+    public Boolean isPushed;
 }
