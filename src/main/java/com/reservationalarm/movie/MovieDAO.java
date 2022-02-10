@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface MovieDAO {
     Movie selectMovieById(Integer movieId);
-    List<Movie> selectMovieByTitle(String movieTitle);
+    Movie selectMovieByTitle(String movieTitle);
     List<Movie> selectAllMovie();
     void insertMovie(Movie movie);
     void updateMovie(Movie movie);

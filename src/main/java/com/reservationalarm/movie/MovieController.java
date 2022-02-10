@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/*
+ *  TODO: 프론트에서 정확한 movieTitle 보내도록 할것
+ * */
+
 @RestController
 public class MovieController {
     @Autowired
@@ -21,8 +25,8 @@ public class MovieController {
     }
 
     @GetMapping("/movie/{movieTitle}")
-    public  ResponseEntity<List<Movie>> findMovieByTitle(@PathVariable String movieTitle){
-        List<Movie> movies = movieBO.findMovieByTitle(movieTitle);
+    public  ResponseEntity<Movie> findMovieByTitle(@PathVariable String movieTitle){
+        Movie movies = movieBO.findMovieByTitle(movieTitle);
         return ResponseEntity.ok().body(movies);
     }
 }

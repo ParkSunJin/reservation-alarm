@@ -17,7 +17,7 @@ public class MovieBO {
         return movieDAO.selectMovieById(movieId);
     }
 
-    public List<Movie> findMovieByTitle(String movieTitle) {
+    public Movie findMovieByTitle(String movieTitle) {
         if (movieTitle.isEmpty()) return null;
         return movieDAO.selectMovieByTitle(movieTitle);
     }

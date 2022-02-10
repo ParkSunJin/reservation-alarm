@@ -8,7 +8,7 @@
     </select>
 
     <select id="selectMovieByTitle" resultType="Movie">
-        select * from movie where movieTitle like CONCAT('%',#{movieTitle},'%')
+        select * from movie where movieTitle=#{movieTitle}
     </select>
 
     <select id="selectAllMovie" resultType="Movie">
