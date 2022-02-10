@@ -8,7 +8,7 @@
     </select>
 
     <select id="selectTheaterByName" resultType="Theater">
-        select * from theater where theaterName like CONCAT('%',#{theaterName},'%')
+        select * from theater where theaterName=#{theaterName}
     </select>
 
     <select id="selectAllTheater" resultType="Theater">
@@ -18,12 +18,4 @@
     <insert id="insertTheater" parameterType="Theater" useGeneratedKeys="true" keyProperty="theaterId">
         insert into theater (theaterId, theaterName, theaterCode, areaName, areaCode, theaterNameEng, areaNameEng) values (#{theaterId}, #{theaterName}, #{theaterCode}, #{areaName}, #{areaCode}, #{theaterNameEng}, #{areaNameEng})
     </insert>
-
-    <delete id="deleteAllTheater">
-        delete from theater
-    </delete>
-
-    <update id="initializeAutoIncrement">
-        alter table theater alter column theaterId restart with 1
-    </update>
 </mapper>

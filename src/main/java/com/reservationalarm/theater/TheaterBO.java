@@ -1,6 +1,7 @@
 package com.reservationalarm.theater;
 
 import com.reservationalarm.theater.domain.Theater;
+import lombok.RequiredArgsConstructor;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -17,12 +18,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.util.function.Predicate.not;
-
 @Service
+@RequiredArgsConstructor
 public class TheaterBO {
-    @Autowired
-    TheaterDAO theaterDAO;
+    private final TheaterDAO theaterDAO;
 
     // 영화관 정보 크롤링 url
     private final static String crawlingURL = "http://www.cgv.co.kr/theaters/?areacode=01&theaterCode=0056";
@@ -35,7 +34,7 @@ public class TheaterBO {
         return theaterDAO.selectTheaterById(theaterId);
     }
 
-    public List<Theater> findTheaterByName(String theaterName){
+    public Theater findTheaterByName(String theaterName){
         if(theaterName.isEmpty()) return null;
         return theaterDAO.selectTheaterByName(theaterName);
     }

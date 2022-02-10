@@ -8,9 +8,7 @@ import java.util.List;
 @Mapper
 public interface TheaterDAO {
     Theater selectTheaterById(Integer theaterId);
-    List<Theater> selectTheaterByName(String theaterName);
+    Theater selectTheaterByName(String theaterName);
     List<Theater> selectAllTheater();
     void insertTheater(Theater theater);
-    void deleteAllTheater();
-    void initializeAutoIncrement();
 }

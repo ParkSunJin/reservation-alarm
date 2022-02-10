@@ -1,8 +1,8 @@
 package com.reservationalarm.theater;
 
 import com.reservationalarm.theater.domain.Theater;
+import lombok.RequiredArgsConstructor;
 import org.codehaus.jettison.json.JSONException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
 
+/*
+*  TODO: 프론트에서 정확한 theaterName만 보내도록 할것
+* */
+
 @RestController
+@RequiredArgsConstructor
 public class TheaterController {
-    @Autowired
-    TheaterBO theaterBO;
+    private final TheaterBO theaterBO;
 
     @GetMapping("/theater")
     public ResponseEntity<List<Theater>> findAllTheater(){
@@ -24,9 +28,9 @@ public class TheaterController {
     }
 
     @GetMapping("/theater/{theaterName}")
-    public ResponseEntity<List<Theater>> findTheaterByName(@PathVariable String theaterName){
-        List<Theater> theaters = theaterBO.findTheaterByName(theaterName);
-        return ResponseEntity.ok().body(theaters);
+    public ResponseEntity<Theater> findTheaterByName(@PathVariable String theaterName){
+        Theater theater = theaterBO.findTheaterByName(theaterName);
+        return ResponseEntity.ok().body(theater);
     }
 
     @PostMapping("/theater")
