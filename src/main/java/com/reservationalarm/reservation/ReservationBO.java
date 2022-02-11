@@ -24,7 +24,8 @@ public class ReservationBO {
     private final ReservationDAO reservationDAO;
 
     public void makeReservation(ReservationCreateDTO reservationCreateDTO){
-
+        Reservation reservation = ReservationModelConverter.of(reservationCreateDTO);
+        reservationDAO.insert(reservation);
     }
 
     public List<ReservationReadDTO> findAll(){
@@ -33,7 +34,6 @@ public class ReservationBO {
                 .map(ReservationModelConverter::of)
                 .collect(Collectors.toList());
     }
-
 
     ArrayList<MovieTime> findReservation(Reservation reservation) throws IOException {
         Theater theater = reservation.getTheater();

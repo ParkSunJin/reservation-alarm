@@ -9,15 +9,18 @@ import com.reservationalarm.theater.TheaterBO;
 import com.reservationalarm.theater.domain.Theater;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
-@RequiredArgsConstructor
+@Component
 public class ReservationModelConverter {
-    @Autowired
     private static TheaterBO theaterBO;
-    @Autowired
     private static MovieBO movieBO;
+
+    @Autowired
+    private ReservationModelConverter(TheaterBO theaterBO, MovieBO movieBO){
+        this.theaterBO = theaterBO;
+        this.movieBO = movieBO;
+    }
 
     public static Reservation of(ReservationCreateDTO dto){
         Theater theater = theaterBO.findTheaterByName(dto.theater);

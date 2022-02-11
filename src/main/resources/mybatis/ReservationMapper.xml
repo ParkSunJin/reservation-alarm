@@ -40,6 +40,6 @@
     </select>
 
     <insert id="insert" parameterType="Reservation" useGeneratedKeys="true" keyProperty="reservationId">
-        insert into reservation (movieTitle, desiredDate, theaterId, hallType) values (#{movieTitle}, #{desiredDate}, #{theaterId}, #{hallType})
+        insert into reservation (movieId, desiredDate, theaterId, hallType, isPushed) values (#{movieId}, #{desiredDate}, #{theaterId}, #{hallType}, #{isPushed})
     </insert>
 </mapper>

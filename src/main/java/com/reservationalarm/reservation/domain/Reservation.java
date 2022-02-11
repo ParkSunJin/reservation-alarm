@@ -19,4 +19,12 @@ public class Reservation {
     public Movie movie;
     public HallType hallType;
     public Boolean isPushed;
+
+    public Integer getMovieId(){
+        return this.movie.getMovieId();
+    }
+
+    public Integer getTheaterId(){
+        return this.theater.getTheaterId();
+    }
 }
