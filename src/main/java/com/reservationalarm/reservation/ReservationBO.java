@@ -3,6 +3,7 @@ package com.reservationalarm.reservation;
 import com.reservationalarm.reservation.domain.Reservation;
 import com.reservationalarm.reservation.model.MovieTime;
 import com.reservationalarm.reservation.model.ReservationCreateDTO;
+import com.reservationalarm.reservation.model.ReservationReadDTO;
 import com.reservationalarm.theater.domain.Theater;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Connection;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,8 +27,11 @@ public class ReservationBO {
 
     }
 
-    public List<Reservation> findAll(){
-        return reservationDAO.selectAll();
+    public List<ReservationReadDTO> findAll(){
+        List<Reservation> reservations = reservationDAO.selectAll();
+        return reservations.stream()
+                .map(ReservationModelConverter::of)
+                .collect(Collectors.toList());
     }
 
 

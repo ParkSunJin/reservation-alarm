@@ -1,7 +1,7 @@
 package com.reservationalarm.reservation;
 
-import com.reservationalarm.reservation.domain.Reservation;
 import com.reservationalarm.reservation.model.ReservationCreateDTO;
+import com.reservationalarm.reservation.model.ReservationReadDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +29,8 @@ public class ReservationController {
 
 
     @GetMapping("/reservation")
-    public ResponseEntity<List<Reservation>> findAll(){
-        List<Reservation> reservations = reservationBO.findAll();
+    public ResponseEntity<List<ReservationReadDTO>> findAll(){
+        List<ReservationReadDTO> reservations = reservationBO.findAll();
         return ResponseEntity.ok().body(reservations);
     }
 }
