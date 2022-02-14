@@ -14,17 +14,15 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
 public class MovieBatchOuterTasklet implements Tasklet {
+
     private final MovieDAO movieDAO;
 
     // 영화 정보 크롤링 url
@@ -57,6 +55,9 @@ public class MovieBatchOuterTasklet implements Tasklet {
     }
 
     private Movie convert(Element movieInfo) {
+        // detail view url
+        String detailViewURL = movieInfo.select("a[href^=/movies/detail-view/]")
+                .attr("abs:href");
         // 영화 포스터 이미지 url
         String movieImageSrc = movieInfo.select(".thumb-image img")
                 .attr("abs:src");
@@ -90,7 +91,7 @@ public class MovieBatchOuterTasklet implements Tasklet {
                 .movieScore(movieScore)
                 .openingDate(openingDate)
                 .isOpened(isOpened)
-                .reservationLink(reservationLink)
+                .detailViewURL(detailViewURL)
                 .build();
     }
 }

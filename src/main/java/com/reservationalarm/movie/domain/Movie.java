@@ -16,6 +16,6 @@ public class Movie {
     public String movieImageSrc;
     public Double movieScore;
     public LocalDateTime openingDate;
-    public String reservationLink;
+    public String detailViewURL;
     public Boolean isOpened;
 }

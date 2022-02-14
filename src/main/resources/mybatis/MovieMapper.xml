@@ -16,7 +16,7 @@
     </select>
 
     <insert id="insertMovie" parameterType="Movie" useGeneratedKeys="true" keyProperty="movieId">
-        insert into movie (movieId, movieTitle, movieImageSrc, movieScore, openingDate, reservationLink, isOpened) values (#{movieId}, #{movieTitle}, #{movieImageSrc}, #{movieScore}, #{openingDate}, #{reservationLink}, #{isOpened})
+        insert into movie (movieId, movieTitle, movieImageSrc, movieScore, openingDate, detailViewURL, isOpened) values (#{movieId}, #{movieTitle}, #{movieImageSrc}, #{movieScore}, #{openingDate}, #{detailViewURL}, #{isOpened})
     </insert>
 
     <update id="updateMovie" parameterType="Movie">
