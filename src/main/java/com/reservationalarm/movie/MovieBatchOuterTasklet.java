@@ -16,6 +16,9 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Objects;
 
@@ -69,14 +72,9 @@ public class MovieBatchOuterTasklet implements Tasklet {
         // 개봉 날짜
         String openingDateStr = movieInfo.select(".txt-info").text()
                 .substring(0, 10);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
-        Date openingDate = null;
-        try {
-            openingDate = dateFormat.parse(openingDateStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+
+        LocalDateTime openingDate = LocalDate.parse(openingDateStr, formatter).atStartOfDay();
 
         // 개봉 여부
         Elements dday = movieInfo.select(".dday");

@@ -2,6 +2,7 @@ package com.reservationalarm.movie.domain;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -14,7 +15,7 @@ public class Movie {
     public String movieTitle;
     public String movieImageSrc;
     public Double movieScore;
-    public Date openingDate;
+    public LocalDateTime openingDate;
     public String reservationLink;
     public Boolean isOpened;
 }
